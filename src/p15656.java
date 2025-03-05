@@ -6,7 +6,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
 
-public class Main {
+public class p15656 {
     static int n;
     static int m;
     static boolean visited[];
@@ -39,14 +39,14 @@ public class Main {
         visited = new boolean[n]; // 방문체크
         result = new int[m]; // 출력할 결과
 
-        dfs(0);
+        dfs(0, 0);
 
         bw.flush();
         br.close();
         bw.close();
     }
 
-    static void dfs(int depth) throws IOException{
+    static void dfs(int start, int depth) throws IOException{
         if(depth == m){ // 깊이가 m에 도달했으면 결과 출력
             for(int i = 0; i < m; i++){
                 bw.write(result[i] + " ");
@@ -55,13 +55,9 @@ public class Main {
             return;
         }
 
-        for(int j = 0; j < n; j++){
-            if(visited[j] == false){ // 재귀로 인해 다시 visited[i]를 만났을 때 false이면 다음 반복문으로 넘어감
-                visited[j] = true;
-                result[depth] = input[j];
-                dfs(depth + 1);
-                visited[j] = false; // 결과를 출력하고 되돌아 왔으면 다음 반복문을 위해 false로 초기화
-            }
+        for(int j = start; j < n; j++){
+            result[depth] = input[j];
+            dfs(j, depth + 1); // 재귀로 인한 반복문을 자기 자신부터 시작
         }
 
     }

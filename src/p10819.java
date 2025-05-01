@@ -29,7 +29,7 @@ public class Main {
             inputInt[i] = Integer.parseInt(inputStr[i]);
         }
 
-        visited = new boolean[n]; // ar[]의 각 인덱스에 대한 방문이 아닌, 숫자 1~n의 방문여부임.
+        visited = new boolean[n]; // ar[]의 각 인덱스에 대한 방문이 아닌, 숫자 1~n의 방문여부임
         ar = new int[n];
 
         dfs(0);

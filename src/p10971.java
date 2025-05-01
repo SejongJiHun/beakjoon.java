@@ -40,7 +40,7 @@ public class Main {
     }
 
     // start = 처음 출발한 도시. now = 현재 도시. cost = 현재 비용
-    // 참고로 dfs 깊이우선탐색은 스택을 사용한다
+    // 참고로 dfs 깊이우선탐색은 스택을 사용한다.
     public static void dfs(int start, int now, int cost){
         if(allVisited(visited, start)){
             if(weight[now][start] == 0){ // 만약 마지막 도시에서 처음 출발 도시로 가지 못하면 return

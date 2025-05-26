@@ -10,7 +10,7 @@ public class Main {
     static int N;
     static int [][] S;
 
-    static int sumOfSij[];
+    static boolean visited[];
 
     static int minGap = Integer.MAX_VALUE;
 
@@ -18,7 +18,8 @@ public class Main {
 
         N = Integer.parseInt(br.readLine());
         S = new int[N][N];
-        sumOfSij = new int[N*N];
+        visited = new boolean[N];
+
 
         String input[];
 
@@ -29,21 +30,10 @@ public class Main {
             }
         }
 
-        // Sij + Sji 를 sumOfSij에 저장
-        int index = 0;
-        for(int i = 1; i < N; i++){
-            for(int j = 0; j <= i - 1; j++){
-                sumOfSij[index++] = (S[i][j] + S[j][i]);
-            }
-        }
 
-        Arrays.sort(sumOfSij);
+        dfs(0, 0);
 
-        for(int i = 0 ; i < sumOfSij.length - 1; i++){
-            if(sumOfSij[i] - sumOfSij[i + 1] < minGap){
-                minGap = sumOfSij[i] - sumOfSij[i + 1];
-            }
-        }
+        bw.write(minGap + "\n");
 
 
 
@@ -52,6 +42,36 @@ public class Main {
         bw.close();
     }
 
+    
+    // 조합문제라도 visited는 사용가능. for문의 i의 시작점이 중요.
+    static void dfs(int start, int depth){
+        if(depth == N/2){
+            int sumOfStart = 0;
+            int sumOfLink = 0;
+            for(int i = 0; i < N; i++){
+                for(int j = i + 1; j < N; j++){
+                    if(visited[i] && visited[j]){
+                        sumOfStart += (S[i][j] + S[j][i]);
+                    }
+
+                    if(!visited[i] && !visited[j]){
+                        sumOfLink += (S[i][j] + S[j][i]);
+                    }
+                }
+            }
+
+            minGap = Math.min(Math.abs(sumOfStart - sumOfLink), minGap);
+        }
+
+
+        for(int i = start; i < N; i++){
+            if(!visited[i]){
+                visited[i] = true;
+                dfs(i + 1, depth + 1);
+                visited[i] = false;
+            }
+        }
+    }
 
 
 

@@ -27,6 +27,7 @@ public class Main {
         }
 
 
+        // dfs를 반복문으로 여러번 돌리는 방법도 있음
         for(int i = 1; i <= N; i++){
             dfs(0, 0, i, 0);
         }
@@ -37,6 +38,7 @@ public class Main {
         br.close();
         bw.close();
     }
+
 
     static void dfs(int start, int nowDepth, int maxDepth, int sum) throws NumberFormatException, IOException {
         if(nowDepth == maxDepth){

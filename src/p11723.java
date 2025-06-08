@@ -9,13 +9,13 @@ public class Main {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));;
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));;
 
+    // S[i]가 0이면 집합에 i가 없는거고, 1이면 존재
     static int [] S = new int[21];
 
 
     public static void main(String[] args) throws NumberFormatException, IOException {
 
         int M = Integer.parseInt(br.readLine());
-
 
         for(int i = 0; i < M; i++) {
             String[] input = br.readLine().split(" ");

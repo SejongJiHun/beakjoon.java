@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-// 이 문제는 이해부터가 어려움. 문제 설명이 불친절함.
+// 이 문제는 이해부터가 어려움.
 // 응가같은 문제임 ㅇㅇ.
 // 그냥 그래프 만들어서 길이가 4인 경로가 있는지 없는지 찾으면 됨.
 class Main {
